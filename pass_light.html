@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>passwords</title>
+<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/128/2665/2665240.png">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Dancing+Script:wght@400..700&family=Kaushan+Script&family=Pacifico&family=Playwrite+IN+Guides&family=Satisfy&display=swap');
+
+*{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    transition: 1s;
+    font-family: "Kaushan Script", cursive;
+    font-weight: 900;
+    justify-content: center;
+}
+
+body{
+    background-color: #c5c5c5;
+    color: #1b1b22;
+}
+
+#all-page{
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#head{
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: x-large;
+}
+
+#title{
+    font-size: 50px;
+    color: #1b1b22;
+}
+
+input{
+    text-align: center;
+    margin-bottom: 10px;
+    width: 80%;
+    height: 30px;
+    outline: none;
+    border: 4px solid #888888;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #1b1b22;
+    font-size: xx-large;
+    padding: 20px;
+    padding-bottom: 20px;
+}
+
+input::placeholder{
+    text-transform: uppercase;
+    color: #888888;
+}
+
+input:focus{
+    background-color: #eaeaea;
+    border: 4px solid #555555;
+    box-shadow: none;
+    width: 90%;
+    padding: 10px 0px;
+    margin: 5px;
+}
+
+#submit{
+    background-color: #d1e7ff;
+    border: none;
+    border-radius: 10px;
+    width: 50%;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #1b1b22;
+}
+
+#submit:hover{
+    background-color: #a8d0ff;
+    border: 2px solid #66a3ff;
+    color: #000000;
+    width: 55%;
+    padding: 4px;
+    margin: -3px;
+    margin-bottom: 5px;
+}
+
+#search_by_project, #search_by_name, #change{
+    background-color: #d1e7ff;
+    border: none;
+    border-radius: 10px;
+    width: 28%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    color: #1b1b22;
+}
+
+#search_by_project:hover, #search_by_name:hover, #change:hover{
+    background-color: #a8d0ff;
+    border: 2px solid #66a3ff;
+    color: #000000;
+    width: 31%;
+    margin-right: -1px;
+    margin-left: -1px;
+    padding-bottom: 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+tr{
+    font-size: 30px;
+    border: 3px solid #cccccc;
+    background-color: #ffffff;
+}
+
+th, td{
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #e0e0e0;
+    color: #1b1b22;
+}
+
+button{
+    cursor: pointer;
+    font-size: xx-large;
+}
+
+#delete, #update, #copy{
+    font-size: x-large;
+    background-color: #ffcccc;
+    border: 0px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #1b1b22;
+}
+
+#delete:hover ,#update:hover ,#copy:hover{
+    background-color: #ff9999;
+    padding: 7px 20px ;
+    box-shadow: none;
+}
+
+#delete_all{
+    background-color: #ff9999;
+    border: none;
+    border-radius: 10px;
+    width: 95%;
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    text-transform: uppercase;
+    color: #1b1b22;
+}
+
+#delete_all:hover{
+    background-color: #ff6666;
+    border: 2px solid #cc5555;
+    box-shadow: none;
+    width: 100%;
+    padding: 5px;
+}
+
+#show_hide_btn{
+    background-color: #d1e7ff;
+    border: none;
+    border-radius: 10px;
+    width: 80%;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    padding: 5px;
+    color: #1b1b22;
+}
+
+#show_hide_btn:hover{
+    background-color: #a8d0ff;
+    border: 2px solid #66a3ff;
+    box-shadow: none;
+    color: #000000;
+    width: 90%;
+    padding: 8px;
+    margin: 5px;
+}
+
+#proname{
+    text-transform: uppercase;
+}
+
+#search:focus{
+    padding: 10px 0px;
+}
+</style>
+</head>
+<body>
+
+<div id="all-page">
+
+    <div id="head">
+        <h2 id="title">password generator</h2>
+    </div>
+
+    <div id="inputs">
+        <input type="text" id="proname" autocomplete="off" placeholder="enter Project Name" onclick="proname.value = '' ">
+        <input type="text" id="passname" autocomplete="off" placeholder="enter Name">
+        <input type="text" id="password" autocomplete="off" placeholder="enter Password">
+        <button id="submit">Add Password</button>
+    </div>
+
+    <div id="outputs">
+        <input type="text" id="search" autocomplete="off" placeholder="search">
+        <button id="search_by_project" onclick="search_by_project()">search by project</button>
+        <button id="change" onclick="location.href='/passwords/pass.html'">dark mode</button>
+        <button id="search_by_name" onclick="search_by_name()">search by name</button>
+        <button id="show_hide_btn" style="display:none;">show all</button>
+        <button id="delete_all" onclick="delete_all()">delete all</button>
+
+        <table>
+            <thead id="thead">
+                <tr>
+                    <th>Project</th>
+                    <th>Name</th>
+                    <th>Password</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+let proname = document.getElementById("proname");
+let passname = document.getElementById("passname");
+let password = document.getElementById("password");
+let deleteAllBtn = document.getElementById("delete_all");
+let thead = document.getElementById("thead");
+let showHideBtn = document.getElementById("show_hide_btn");
+let datapro = localStorage.product ? JSON.parse(localStorage.product) : [];
+
+thead.style.display = "none";
+deleteAllBtn.style.display = "none";
+showHideBtn.style.display = datapro.length>0 ? "inline-block" : "none";
+
+submit.onclick = function(){
+    if (proname.value == "" || passname.value == "" || password.value == ""){
+        alert("fill all input").style
+    } else {
+        datapro.push({
+            proname: proname.value,
+            passname: passname.value,
+            password: password.value
+        });
+        localStorage.product = JSON.stringify(datapro);
+        passname.value = password.value = "";
+        if(datapro.length>0){
+            showHideBtn.style.display = "inline-block";
+            showHideBtn.innerText = "show all";
+        }
+    }
+};
+
+function delete_data(i){
+    if (confirm("are you sure you want to delete password?")){
+        datapro.splice(i,1);
+        localStorage.product = JSON.stringify(datapro);
+        show_data();
+        if(datapro.length===0) showHideBtn.style.display="none";
+    }
+}
+
+function update_data(i){
+    datapro[i].proname = prompt("enter new project name", datapro[i].proname);
+    datapro[i].passname = prompt("enter new name", datapro[i].passname);
+    datapro[i].password = prompt("enter new password", datapro[i].password);
+    localStorage.product = JSON.stringify(datapro);
+    show_data();
+}
+
+function delete_all(){
+    if(confirm("are you sure you want to delete all passwords?")){
+        datapro = [];
+        localStorage.clear();
+        show_data();
+        showHideBtn.style.display="none";
+    }
+}
+
+function search_by_project(){
+    let search = document.getElementById("search").value.toLowerCase();
+    let filtered = datapro.filter(d => d.proname.toLowerCase().includes(search));
+    show_data(filtered);
+    document.getElementById("search").value = "";
+    if(filtered.length>0) showHideBtn.innerText = "hide all";
+}
+
+function search_by_name(){
+    let search = document.getElementById("search").value.toLowerCase();
+    let filtered = datapro.filter(d => d.passname.toLowerCase().includes(search));
+    show_data(filtered);
+    document.getElementById("search").value = "";
+    if(filtered.length>0) showHideBtn.innerText = "hide all";
+}
+
+showHideBtn.onclick = function(){
+    if(showHideBtn.innerText === "show all"){
+        show_data();
+        showHideBtn.innerText = "hide all";
+    } else {
+        document.getElementById("tbody").innerHTML = "";
+        thead.style.display = "none";
+        deleteAllBtn.style.display = "none";
+        showHideBtn.innerText = "show all";
+    }
+};
+
+function show_data(filteredData = null){
+    let data = filteredData || datapro;
+    let table = "";
+    for(let i=0;i<data.length;i++){
+        table += `
+        <tr>
+            <td id = "proname">${data[i].proname}</td>
+            <td id = "passname">${data[i].passname}</td>
+            <td id = "password">${data[i].password}</td>
+            <td><button id="delete" onclick="delete_data(${i})">delete</button></td>
+            <td><button id="update" onclick="update_data(${i})">update</button></td>
+        </tr>`;
+    }
+    document.getElementById("tbody").innerHTML = table;
+    thead.style.display = data.length>0 ? "table-header-group" : "none";
+    deleteAllBtn.style.display = data.length>0 ? "block" : "none";
+}
+
+// double click copy
+document.addEventListener("DOMContentLoaded", () => {
+    function copyCellText(td) {
+        const originalText = td.innerText;
+        navigator.clipboard.writeText(originalText).then(() => {
+            td.innerText = "Copied ✔";
+            setTimeout(() => td.innerText = originalText, 1000);
+            if (window.getSelection) window.getSelection().removeAllRanges();
+            else if (document.selection) document.selection.empty();
+        });
+    }
+
+    let lastClickTime = 0;
+    const doubleClickDelay = 300;
+
+    function enableDoubleClickCopy() {
+        const tbody = document.getElementById("tbody");
+        tbody.querySelectorAll("td").forEach(td => {
+            if (td.id === "proname" || td.id === "passname" || td.id === "password") {
+                td.style.cursor = "pointer";
+                td.addEventListener("click", () => {
+                    const currentTime = new Date().getTime();
+                    if(currentTime - lastClickTime < doubleClickDelay){
+                        copyCellText(td);
+                    }
+                    lastClickTime = currentTime;
+                });
+            }
+        });
+    }
+
+    const originalShowData = show_data;
+    show_data = function(filteredData = null) {
+        originalShowData(filteredData);
+        enableDoubleClickCopy();
+    };
+
+    enableDoubleClickCopy();
+});
+</script>
+
+</body>
+</html>
